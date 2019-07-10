@@ -1,4 +1,4 @@
-# play-store-api [![Build Status](https://travis-ci.org/yeriomin/play-store-api.svg?branch=master)](https://travis-ci.org/yeriomin/play-store-api) [![Release](https://jitpack.io/v/yeriomin/play-store-api.svg)](https://jitpack.io/#yeriomin/play-store-api) [![downloads](https://jitpack.io/v/yeriomin/play-store-api/month.svg)](https://jitpack.io/#yeriomin/play-store-api)
+# play-store-api [![](https://jitpack.io/v/kiliakin/play-store-api.svg)](https://jitpack.io/#kiliakin/play-store-api)
 
 Google Play Store protobuf API wrapper in java
 
