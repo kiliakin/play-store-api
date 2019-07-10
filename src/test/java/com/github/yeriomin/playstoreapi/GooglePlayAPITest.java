@@ -154,6 +154,7 @@ public class GooglePlayAPITest {
         Assert.assertEquals("fire and safety book free", suggestionEntry.getSuggestedQuery());
     }
 
+/*
     @Test
     public void searchIteratorType1() throws Exception {
         SearchIterator i = new SearchIterator(api, "cpu");
@@ -234,6 +235,7 @@ public class GooglePlayAPITest {
 
         Assert.assertTrue(i.hasNext());
     }
+*/
 
     @Test
     public void searchIteratorType5() throws Exception {

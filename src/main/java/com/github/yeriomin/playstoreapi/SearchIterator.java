@@ -1,5 +1,6 @@
 package com.github.yeriomin.playstoreapi;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -32,14 +33,17 @@ public class SearchIterator extends AppListIterator {
 
     @Override
     public List<DocV2> next() {
-        List<DocV2> next = new ArrayList<DocV2>(super.next());
-        if (null != mainResult) {
-            if (next.size() > 0 && !next.get(0).getDetails().getAppDetails().getPackageName().equals(mainResult.getDetails().getAppDetails().getPackageName())) {
-                next.add(0, mainResult);
-            }
-            mainResult = null;
+        try {
+            Payload payload = getPayload();
+            DocV2 rootDoc = getRootDoc(payload);
+            SearchResultParser searchEngineResultPage = new SearchResultParser(SearchResultParser.ALL);
+            searchEngineResultPage.append(rootDoc);
+            nextPageUrl = searchEngineResultPage.getNextPageUrl();
+            firstQuery = false;
+            return searchEngineResultPage.getDocList();
+        } catch (IOException e) {
+            return new ArrayList<DocV2>();
         }
-        return next;
     }
 
     @Override
@@ -66,6 +70,6 @@ public class SearchIterator extends AppListIterator {
 
     @Override
     protected boolean isRootDoc(DocV2 doc) {
-        return super.isRootDoc(doc) && doc.getDocid().contains("search");
+        return doc != null && doc.getBackendId() == 3;
     }
 }
